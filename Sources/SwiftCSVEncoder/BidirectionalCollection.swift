@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension BidirectionalCollection where Element == String {
+internal extension BidirectionalCollection where Element == String {
     var commaDelimited: String { joined(separator: ",") }
     var newlineDelimited: String { joined(separator: #"\n"#) }
 }
