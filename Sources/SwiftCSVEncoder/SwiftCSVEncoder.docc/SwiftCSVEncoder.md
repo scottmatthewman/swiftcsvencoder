@@ -8,7 +8,7 @@ CSV files are generated from a collection of objects, with one object correlatin
 
 A ``CSVTable`` definition includes an ordered list of column descriptions, which are then applied in turn to create all the fields of each row of the table.
 
-For example, given a `Person` record:
+For example, given a `Doctor` record:
 
 ```swift
 struct Doctor {

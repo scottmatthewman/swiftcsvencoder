@@ -2,6 +2,8 @@
 
 A Swift package that allows for creation of CSV files.
 
+[**Read the full documentation.**](https://scottmatthewman.github.io/swiftcsvencoder/documentation/swiftcsvencoder/)
+
 ## Rationale
 
 Neither Swift nor Apple's application libraries contain a standardised method of converting data to CSV format for export. A number of packages already exist, but I wanted to build my own minimal-but-reusable library.
