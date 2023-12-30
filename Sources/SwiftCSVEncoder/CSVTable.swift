@@ -13,7 +13,7 @@ public struct CSVTable<Record> {
 
     public init(
         columns: [CSVColumn<Record>],
-        configuration: CSVEncoderConfiguration = .standard
+        configuration: CSVEncoderConfiguration = .default
     ) {
         self.columns = columns
         self.configuration = configuration
