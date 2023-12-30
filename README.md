@@ -12,7 +12,7 @@ Neither Swift nor Apple's application libraries contain a standardised method of
 
    `Codable` is great, but is limited to a single coding representation per object. It's also created with hierarchical representations – dictionaries and arrays inside other dictionaries or arries - in mind, whereas CSV is by its nature flat in structure.
    
-    I also need CSV outputs with different columns for different purposes, so SwiftDSVEncoder provides a `CSVTable` object that defines which columns to use:
+    I also need CSV outputs with different columns for different purposes, so SwiftCSVEncoder provides a `CSVTable` object that defines which columns to use:
 
    ```swift
    let table: CSVTable<Customer> = CSVTable(
@@ -43,4 +43,4 @@ Neither Swift nor Apple's application libraries contain a standardised method of
 
 6. **Only support in-memory data creation**
 
-   `SwiftCSVEncoder` only cerates a string representation of the whole CSV file in memory. The calling aplication needs to handle saving the data to an appropriate location. This means that is more appropriate for small datasets; larger files may require more efficient methods of storing a persistent copy of the CSV data.  
+   `SwiftCSVEncoder` only creates a string representation of the whole CSV file in memory. The calling application needs to handle saving the data to an appropriate location.
