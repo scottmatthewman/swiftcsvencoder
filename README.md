@@ -4,13 +4,15 @@ A Swift package that allows for creation of CSV files.
 
 ## Rationale
 
-Neith Swift nor Apple's application libraries contain a standardised method of converting data to CSV format for export. A number of packages already exist, but I wanted to build my own minimal-but-reusable library.
+Neither Swift nor Apple's application libraries contain a standardised method of converting data to CSV format for export. A number of packages already exist, but I wanted to build my own minimal-but-reusable library.
 
 ## Features
 
 1. **Not coupled to root object structure.**
 
-   `Codable` is great, but is limited to a single coding representation per object. I need CSV outputs with different columns for different purposes, so we have a `CSVTable` object that defines which columns to use:
+   `Codable` is great, but is limited to a single coding representation per object. It's also created with hierarchical representations – dictionaries and arrays inside other dictionaries or arries - in mind, whereas CSV is by its nature flat in structure.
+   
+    I also need CSV outputs with different columns for different purposes, so SwiftDSVEncoder provides a `CSVTable` object that defines which columns to use:
 
    ```swift
    let table: CSVTable<Customer> = CSVTable(
