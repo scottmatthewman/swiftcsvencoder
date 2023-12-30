@@ -7,11 +7,40 @@
 
 import Foundation
 
-public protocol CSVEncodable { 
+/// Marks a data type as being natively encodable to a CSV field.
+///
+/// When defining a ``CSVTable``, each column definition includes a ``CSVColumn/attribute`` function that must
+/// a data type that conforms to ``CSVEncodable``.
+///
+/// SwiftCSVEncoder provides default support for the following data types:
+/// * ``Swift/String``
+/// * ``Swift/Int``
+/// * ``Swift/Double``
+/// * ``Foundation/Date``
+/// * ``Foundation/UUID``
+///
+/// ``Swift/Optional`` values are also supported. When a value is `nil`/`.none`, it will be represented as an empty value.
+/// For example, given a list with an optional **Notes** column:
+///
+/// ```csv
+/// ID,Name,Notes,First episode
+/// 1,William Hartnell,Later played by Richard Hurndall and David Bradley,1963-11-23
+/// 2,Patrick Troughton,,1966-11-05
+/// 3,Jon Pertwee,,1970-01-03
+/// ```
+///
+/// To add conformance to other data types in your own app, implement the required ``encode(configuration:)`` method
+/// to return a `String` representation.
+public protocol CSVEncodable {
+    /// Derive the string representation to be used in the exported CSV.
+    ///
+    /// Do not call this method from your own code; it is designed to be called from the CSV file generator alone.
+    /// - Parameter configuration: The CSV file's encoding configuration. Properties within the configuration may influence the generated string.
+    /// - Returns: A `String` representation as it is expected to appear in the CSV file. Note that no special escaping of the string should be applied at this stage.
     func encode(configuration: CSVEncoderConfiguration) -> String
 }
 
-extension String: CSVEncodable { 
+extension String: CSVEncodable {
     public func encode(configuration: CSVEncoderConfiguration) -> String {
         self
     }
@@ -38,13 +67,13 @@ extension UUID: CSVEncodable {
     }
 }
 
-extension Int: CSVEncodable { 
+extension Int: CSVEncodable {
     public func encode(configuration: CSVEncoderConfiguration) -> String {
         String(self)
     }
 }
 
-extension Double: CSVEncodable { 
+extension Double: CSVEncodable {
     public func encode(configuration: CSVEncoderConfiguration) -> String {
         String(self)
     }

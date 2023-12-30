@@ -8,8 +8,8 @@
 import Foundation
 
 public struct CSVColumn<Record> {
-    var header: String
-    var attribute: (Record) -> CSVEncodable
+    public private(set) var header: String
+    public private(set) var attribute: (Record) -> CSVEncodable
 
     init(
         _ header: String,
