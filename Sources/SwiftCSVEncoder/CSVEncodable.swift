@@ -16,6 +16,7 @@ import Foundation
 /// * ``Swift/String``
 /// * ``Swift/Int``
 /// * ``Swift/Double``
+/// * ``Swift/Bool``
 /// * ``Foundation/Date``
 /// * ``Foundation/UUID``
 ///
@@ -76,6 +77,12 @@ extension Int: CSVEncodable {
 extension Double: CSVEncodable {
     public func encode(configuration: CSVEncoderConfiguration) -> String {
         String(self)
+    }
+}
+
+extension Bool: CSVEncodable {
+    public func encode(configuration: CSVEncoderConfiguration) -> String {
+        self == true ? "true" : "false"
     }
 }
 

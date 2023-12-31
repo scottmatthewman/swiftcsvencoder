@@ -16,6 +16,7 @@ let package = Package(
             targets: ["SwiftCSVEncoder"]),
     ],
     dependencies: [
+        // Used only for building the package documentation
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.1.0")
     ],
     targets: [

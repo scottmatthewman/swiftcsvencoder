@@ -9,5 +9,5 @@ import Foundation
 
 internal extension BidirectionalCollection where Element == String {
     var commaDelimited: String { joined(separator: ",") }
-    var newlineDelimited: String { joined(separator: #"\n"#) }
+    var newlineDelimited: String { joined(separator: "\n") }
 }

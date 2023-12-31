@@ -33,7 +33,7 @@ let doctorsCSV = CSVTable<Doctor>(
 )
 ```
 
-Each column definition takes a block that receives the row's object instance, and must return an object that supports the ``CSVEncodable`` protocol. Out of the box, that includes the Swift primitives `String`, `Int`, `Double` and Foundation data types `Date` and `UUID`. Optional forms are automatically handled, with `nil` values being output as empty cells.
+Each column definition takes a block that receives the row's object instance, and must return an object that supports the ``CSVEncodable`` protocol. Out of the box, that includes the Swift primitives `String`, `Int`, `Double`, `Bool` and Foundation data types `Date` and `UUID`. Optional forms are automatically handled, with `nil` values being output as empty cells.
 
 To generate the CSV file, call ``CSVTable/export(rows:)``. The return value is the full CSV file, including a header row. String items will be enclosed in double quotes where needed:
 

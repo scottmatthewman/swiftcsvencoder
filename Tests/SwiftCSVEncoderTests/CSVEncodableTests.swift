@@ -72,4 +72,16 @@ final class CSVEncodableTests: XCTestCase {
 
         XCTAssertEqual(date.encode(configuration: configuration), "Custom returned value")
     }
+
+    func testBoolTrueEncodedAsString() {
+        let input: Bool = true
+
+        XCTAssertEqual(input.encode(configuration: .default), "true")
+    }
+
+    func testBoolFalseEncodedAsString() {
+        let input: Bool = false
+
+        XCTAssertEqual(input.encode(configuration: .default), "false")
+    }
 }
