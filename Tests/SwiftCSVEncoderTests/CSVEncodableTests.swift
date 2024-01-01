@@ -54,7 +54,8 @@ final class CSVEncodableTests: XCTestCase {
     func testDateEncodesWithDeferredFormat() {
         let configuration = CSVEncoderConfiguration(dateEncodingStrategy: .deferredToDate)
 
-        XCTAssertEqual(date.encode(configuration: configuration), "07/11/2023, 5:34 pm")
+        // timeIntervalSinceReferenceDate
+        XCTAssertEqual(date.encode(configuration: configuration), "721071261.0")
     }
 
     func testDateEncodesWithFormatter() {

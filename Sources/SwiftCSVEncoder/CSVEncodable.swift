@@ -51,7 +51,7 @@ extension Date: CSVEncodable {
     public func encode(configuration: CSVEncoderConfiguration) -> String {
         switch configuration.dateEncodingStrategy {
         case .deferredToDate:
-            self.formatted()
+            String(self.timeIntervalSinceReferenceDate)
         case .iso8601:
             ISO8601DateFormatter().string(from: self)
         case .formatted(let dateFormatter):
