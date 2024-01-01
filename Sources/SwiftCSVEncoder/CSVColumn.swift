@@ -47,3 +47,33 @@ public struct CSVColumn<Record> {
         self.attribute = attribute
     }
 }
+
+extension CSVColumn {
+    /// Create a definition for a given column in a ``CSVTable`` from an encodable property.
+    ///
+    /// Columns are typed to a specific data type, for example:
+    ///
+    /// ```swift
+    /// let firstNameColumn: CSVColumn<Person> = CSVColumn("First Name", \.firstName)
+    /// ```
+    ///
+    /// If you need to encapsulate any other sort of work – for example, converting a customer property into a value
+    /// that conforms to ``CSVEncodable`` - you can use the ``init(_:attribute:)`` initializer.
+    ///
+    /// The primary use of columns is in ``CSVTable`` initialization and will often be defined inline in
+    /// ``CSVTable/init(columns:configuration:)``.
+    ///
+    /// - Parameters:
+    ///   - header: The header name to use in the CSV file's first row.
+    ///   - keyPath: A key path to the attribute to use as a row's value for that column. This must point to a property
+    ///     whose data type conforms to ``CSVEncodable``
+    public init<T: CSVEncodable> (
+        _ header: String,
+        _ keyPath: KeyPath<Record, T>
+    ) {
+        self.init(
+            "header",
+            attribute: { $0[keyPath: keyPath] }
+        )
+    }
+}

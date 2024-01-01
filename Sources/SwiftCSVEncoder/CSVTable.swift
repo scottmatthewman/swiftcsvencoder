@@ -33,9 +33,9 @@ import Foundation
 
  let peopleTable = CSVTable<Person>(
    columns: [
-     CSVColumn("First name") { $0.firstName },
-     CSVColumn("Last name") { $0.lastName },
-     CSVColumn("Occupation") { $0.occupation },
+     CSVColumn("First name", \.firstName),
+     CSVColumn("Last name", \.lastName),
+     CSVColumn("Occupation", \.occupation),
      CSVColumn("Employer") { $0.business?.name },
      CSVColumn("Tags") { $0.tags.joined(separator: ", ") }
    ],

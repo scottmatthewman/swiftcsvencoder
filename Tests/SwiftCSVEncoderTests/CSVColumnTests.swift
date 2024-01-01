@@ -28,4 +28,12 @@ final class CSVColumnTests: XCTestCase {
         let resolvedColumn = column.attribute(testRecord)
         XCTAssertEqual(resolvedColumn.encode(configuration: .default), "Doctor Who")
     }
+
+    func testColumnAttributeCanBeKeyPath() {
+        let column = CSVColumn<TestRecord>("Title", \.title)
+        let testRecord = TestRecord(title: "Doctor Who", date: .now, intValue: 3)
+
+        let resolvedColumn = column.attribute(testRecord)
+        XCTAssertEqual(resolvedColumn.encode(configuration: .default), "Doctor Who")
+    }
 }

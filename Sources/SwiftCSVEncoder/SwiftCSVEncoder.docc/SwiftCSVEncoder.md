@@ -20,20 +20,37 @@ struct Doctor {
 }
 ```
 
-we can create a `CSVTable` with the details of each column:
+we can create a `CSVTable` with the details of each column, using either keypaths or closures that take an instance of a row's data object:
 
 ```swift
 let doctorsCSV = CSVTable<Doctor>(
   columns: [
-    CSVColumn("ID") { $0.id },
-    CSVColumn("Full Name") { "\($0.firstName) \($0.lastName)" },
-    CSVColumn("Description") { $0.description },
-    CSVColumn("First appearance") { $0.firstEpisode }
+    CSVColumn("ID", \.id),
+    CSVColumn("Full Name") { doctor in
+      let formatter = PersonNameComponentsFormatter()
+      let nameComponents = PersonNameComponents(
+        givenName: doctor.firstName,
+        familyName: doctor.lastName
+      )
+      return formatter.string(from: nameComponents) 
+    },
+    CSVColumn("Description", \.description),
+    CSVColumn("First appearance", \.firstEpisode)
   ]
 )
 ```
 
-Each column definition takes a block that receives the row's object instance, and must return an object that supports the ``CSVEncodable`` protocol. Out of the box, that includes the Swift primitives `String`, `Int`, `Double`, `Bool` and Foundation data types `Date` and `UUID`. Optional forms are automatically handled, with `nil` values being output as empty cells.
+> Tip: As each block will be run once per row of your CSV file, you should avoid doing excessive work (such as creating a new `PersonNameComponentsFormatter` in this example) in your blocks.
+
+Each column definition takes a block that receives the row's object instance, and must return an object that supports the ``CSVEncodable`` protocol. If what needs to be returned is a simple attribute, you can specify a keypath instead. So the following column definitions are equivalent:
+
+```swift
+CSVColumn("Description", attribute: { doctor in doctor.description })
+CSVColumn("Description") { $0.description }
+CSVColumn("Description", \.description)
+```
+
+``SwiftCSVEncoder`` adds ``CSVEncodable`` conformance to the Swift primitives `String`, `Int`, `Double`, `Bool` and Foundation data types `Date` and `UUID`. Optional forms are automatically handled, with `nil` values being output as empty cells.
 
 To generate the CSV file, call ``CSVTable/export(rows:)``. The return value is the full CSV file, including a header row. String items will be enclosed in double quotes where needed:
 
