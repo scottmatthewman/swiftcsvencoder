@@ -2,7 +2,7 @@
 
 A Swift package that allows for creation of CSV files.
 
-[**Read the full documentation.**](https://scottmatthewman.github.io/swiftcsvencoder/documentation/swiftcsvencoder/)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fscottmatthewman%2Fswiftcsvencoder%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/scottmatthewman/swiftcsvencoder) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fscottmatthewman%2Fswiftcsvencoder%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/scottmatthewman/swiftcsvencoder)
 
 ## Rationale
 
