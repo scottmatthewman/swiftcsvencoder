@@ -72,7 +72,7 @@ extension CSVColumn {
         _ keyPath: KeyPath<Record, T>
     ) {
         self.init(
-            "header",
+            header,
             attribute: { $0[keyPath: keyPath] }
         )
     }
