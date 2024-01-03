@@ -74,15 +74,87 @@ final class CSVEncodableTests: XCTestCase {
         XCTAssertEqual(date.encode(configuration: configuration), "Custom returned value")
     }
 
-    func testBoolTrueEncodedAsString() {
+    func testBoolTrueEncodedAsStringByDefault() {
         let input: Bool = true
 
         XCTAssertEqual(input.encode(configuration: .default), "true")
     }
 
-    func testBoolFalseEncodedAsString() {
+    func testBoolFalseEncodedAsStringByDefault() {
         let input: Bool = false
 
         XCTAssertEqual(input.encode(configuration: .default), "false")
+    }
+
+    func testBoolTrueEncodedAsStringByTrueFalse() {
+        let input: Bool = true
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .trueFalse)), "true")
+    }
+
+    func testBoolFalseEncodedAsStringByTrueFalse() {
+        let input: Bool = false
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .trueFalse)), "false")
+    }
+
+    func testBoolTrueEncodedAsStringByTrueFalseUppercase() {
+        let input: Bool = true
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .trueFalseUppercase)), "TRUE")
+    }
+
+    func testBoolFalseEncodedAsStringByTrueFalseUppercase() {
+        let input: Bool = false
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .trueFalseUppercase)), "FALSE")
+    }
+
+    func testBoolTrueEncodedAsStringByYesNo() {
+        let input: Bool = true
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .yesNo)), "yes")
+    }
+
+    func testBoolFalseEncodedAsStringByYesNo() {
+        let input: Bool = false
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .yesNo)), "no")
+    }
+
+    func testBoolTrueEncodedAsStringByYesNoUppercase() {
+        let input: Bool = true
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .yesNoUppercase)), "YES")
+    }
+
+    func testBoolFalseEncodedAsStringByYesNoUppercase() {
+        let input: Bool = false
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .yesNoUppercase)), "NO")
+    }
+
+    func testBoolTrueEncodedAsStringByInteger() {
+        let input: Bool = true
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .integer)), "1")
+    }
+
+    func testBoolFalseEncodedAsStringByInteger() {
+        let input: Bool = false
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .integer)), "0")
+    }
+
+    func testBoolTrueEncodedAsCustom() {
+        let input: Bool = true
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .custom(true: "❤️", false: "☠️"))), "❤️")
+    }
+
+    func testBoolFalseEncodedAsCustom() {
+        let input: Bool = false
+
+        XCTAssertEqual(input.encode(configuration: CSVEncoderConfiguration(boolEncodingStrategy: .custom(true: "❤️", false: "☠️"))), "☠️")
     }
 }
