@@ -52,6 +52,8 @@ CSVColumn("Description", \.description)
 
 ``SwiftCSVEncoder`` adds ``CSVEncodable`` conformance to the Swift primitives `String`, `Int`, `Double`, `Bool` and Foundation data types `Date` and `UUID`. Optional forms are automatically handled, with `nil` values being output as empty cells.
 
+``CSVTable/init(columns:configuration:)`` optionally takes a `configuration:` object that specifies strategies for converting `Date` and `Bool` values into strings. This can be essential for some CSV importers which expect columns of those types to be in a specific format in order to correctly recognise them. 
+
 To generate the CSV file, call ``CSVTable/export(rows:)``. The return value is the full CSV file, including a header row. String items will be enclosed in double quotes where needed:
 
 ```csv
