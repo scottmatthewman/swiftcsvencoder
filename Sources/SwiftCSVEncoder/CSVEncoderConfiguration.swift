@@ -67,3 +67,22 @@ public struct CSVEncoderConfiguration {
     /// configuration.
     public static var `default`: CSVEncoderConfiguration = CSVEncoderConfiguration()
 }
+
+internal extension CSVEncoderConfiguration.BoolEncodingStrategy {
+    var encodingValues: (String, String) {
+        switch self {
+        case .trueFalse:
+            return ("true", "false")
+        case .trueFalseUppercase:
+            return ("TRUE", "FALSE")
+        case .yesNo:
+            return ("yes", "no")
+        case .yesNoUppercase:
+            return ("YES", "NO")
+        case .integer:
+            return ("1", "0")
+        case .custom(let trueValue, let falseValue):
+            return (trueValue, falseValue)
+        }
+    }
+}

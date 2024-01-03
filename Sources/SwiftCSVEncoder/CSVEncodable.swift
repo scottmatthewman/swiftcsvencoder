@@ -82,20 +82,9 @@ extension Double: CSVEncodable {
 
 extension Bool: CSVEncodable {
     public func encode(configuration: CSVEncoderConfiguration) -> String {
-        switch configuration.boolEncodingStrategy {
-        case .trueFalse:
-            self == true ? "true" : "false"
-        case .trueFalseUppercase:
-            self == true ? "TRUE" : "FALSE"
-        case .yesNo:
-            self == true ? "yes" : "no"
-        case .yesNoUppercase:
-            self == true ? "YES" : "NO"
-        case .integer:
-            self == true ? "1" : "0"
-        case .custom(let trueValue, let falseValue):
-            self == true ? trueValue : falseValue
-        }
+        let (trueValue, falseValue) = configuration.boolEncodingStrategy.encodingValues
+
+        return self == true ? trueValue : falseValue
     }
 }
 
