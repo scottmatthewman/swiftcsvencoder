@@ -16,6 +16,8 @@ Neither Swift nor Apple's application libraries contain a standardised method of
 
 ## Features
 
+I started out building this library loking for something which had a very specifically small feature set.
+
 1. **Not coupled to root object structure.**
 
    `Codable` is great but is limited to a single coding representation per object. It's also created with hierarchical representations – dictionaries and arrays inside other dictionaries or arries - in mind, whereas CSV is by its nature flat in structure.
@@ -58,6 +60,8 @@ Neither Swift nor Apple's application libraries contain a standardised method of
 6. **Only support in-memory data creation**
 
    `SwiftCSVEncoder` only creates a string representation of the whole CSV file in memory. The calling application needs to handle saving the data to an appropriate location.
+
+As `SwiftCSVEncoder` grows I expect it'll gain more features than those above. But the idea will always to keep it as simple as possible.
 
 ## Documentation and further reading
 
