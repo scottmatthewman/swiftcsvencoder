@@ -9,7 +9,7 @@ import Foundation
 
 /// A set of decisions about how to encode data for a given ``CSVTable``.
 ///
-/// Currently this is restricted solely to a strategy for encoding `Date` values.
+/// Currently this is covers strategies for encoding `Date` and `Bool` values.
 public struct CSVEncoderConfiguration {
     /// The strategy to use when encoding dates.
     ///
