@@ -4,6 +4,12 @@ A Swift package that allows for the creation of CSV files.
 
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fscottmatthewman%2Fswiftcsvencoder%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/scottmatthewman/swiftcsvencoder) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fscottmatthewman%2Fswiftcsvencoder%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/scottmatthewman/swiftcsvencoder)
 
+## Table of Contents
+
+- [Rationale](#rationale)
+- [Features](#features)
+- [Documentation and further reading](#documentation-and-further-reading)
+
 ## Rationale
 
 Neither Swift nor Apple's application libraries contain a standardised method of converting data to CSV format for export. A number of packages already exist, but I wanted to build my own minimal, reusable library.
@@ -52,3 +58,9 @@ Neither Swift nor Apple's application libraries contain a standardised method of
 6. **Only support in-memory data creation**
 
    `SwiftCSVEncoder` only creates a string representation of the whole CSV file in memory. The calling application needs to handle saving the data to an appropriate location.
+
+## Documentation and further reading
+
+* **[Full documentation](https://swiftpackageindex.com/scottmatthewman/swiftcsvencoder/documentation/swiftcsvencoder)**
+* [SwiftCSVEncoder](https://swiftpackageindex.com/scottmatthewman/swiftcsvencoder) on Swift Package Index
+* Blog post: [Creating a CSV Export library for Swift (part 1)](https://matthewman.net/posts/creating-csv-library-for-swift)
